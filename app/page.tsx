@@ -1,65 +1,242 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+
+return (
+
+<main>
+
+{/* HERO */}
+
+<section className="max-w-5xl mx-auto px-6 py-16 text-center">
+
+<h1 className="text-4xl font-bold mb-4">
+Plan Your Perfect India Trip
+</h1>
+
+<p className="text-gray-600 mb-10">
+AI powered travel itineraries, routes and budget planning
+</p>
+
+<div
+id="planner"
+className="bg-white p-8 rounded-xl shadow max-w-xl mx-auto"
+>
+
+<form
+action="/trip-result"
+method="GET"
+className="space-y-4"
+>
+
+<input
+name="from"
+placeholder="From"
+className="border p-3 w-full rounded"
+/>
+
+<input
+name="to"
+placeholder="To"
+className="border p-3 w-full rounded"
+/>
+
+<input
+name="days"
+placeholder="Number of Days"
+className="border p-3 w-full rounded"
+/>
+
+<button
+className="bg-blue-600 text-white px-4 py-3 rounded w-full hover:bg-blue-700"
+>
+
+Generate Trip Plan
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+
+{/* POPULAR DESTINATIONS */}
+
+<section className="max-w-6xl mx-auto px-6 py-16">
+
+<h2 className="text-3xl font-bold mb-8 text-center">
+Popular Destinations
+</h2>
+
+<div className="grid md:grid-cols-3 gap-8">
+
+<Link
+href="/destinations/goa"
+className="border rounded-xl p-6 hover:shadow-md"
+>
+
+<h3 className="text-xl font-semibold mb-2">
+Goa
+</h3>
+
+<p className="text-gray-600">
+Beaches, nightlife and Portuguese heritage.
+</p>
+
+</Link>
+
+<Link
+href="/destinations/manali"
+className="border rounded-xl p-6 hover:shadow-md"
+>
+
+<h3 className="text-xl font-semibold mb-2">
+Manali
+</h3>
+
+<p className="text-gray-600">
+Snow mountains and adventure sports.
+</p>
+
+</Link>
+
+<Link
+href="/destinations/varanasi"
+className="border rounded-xl p-6 hover:shadow-md"
+>
+
+<h3 className="text-xl font-semibold mb-2">
+Varanasi
+</h3>
+
+<p className="text-gray-600">
+Spiritual city famous for the Ganga Aarti.
+</p>
+
+</Link>
+
+</div>
+
+</section>
+
+
+
+{/* FEATURED GUIDES */}
+
+<section className="max-w-6xl mx-auto px-6 py-16 bg-gray-50">
+
+<h2 className="text-3xl font-bold mb-8 text-center">
+Featured Travel Guides
+</h2>
+
+<div className="grid md:grid-cols-3 gap-8">
+
+<Link
+href="/blog/manali-3-day-itinerary"
+className="border rounded-xl p-6 bg-white hover:shadow-md"
+>
+
+<h3 className="font-semibold mb-2">
+Manali 3 Day Itinerary
+</h3>
+
+<p className="text-gray-600">
+Plan the perfect 3 day trip to Manali.
+</p>
+
+</Link>
+
+<Link
+href="/blog/goa-4-day-itinerary"
+className="border rounded-xl p-6 bg-white hover:shadow-md"
+>
+
+<h3 className="font-semibold mb-2">
+Goa 4 Day Itinerary
+</h3>
+
+<p className="text-gray-600">
+Explore beaches and nightlife in Goa.
+</p>
+
+</Link>
+
+<Link
+href="/blog/3-day-varanasi-itinerary"
+className="border rounded-xl p-6 bg-white hover:shadow-md"
+>
+
+<h3 className="font-semibold mb-2">
+Varanasi 3 Day Itinerary
+</h3>
+
+<p className="text-gray-600">
+Complete guide to explore Varanasi.
+</p>
+
+</Link>
+
+</div>
+
+</section>
+
+
+
+{/* WHY USE AI PLANNER */}
+
+<section className="max-w-5xl mx-auto px-6 py-16 text-center">
+
+<h2 className="text-3xl font-bold mb-8">
+Why Use AI Trip Planner
+</h2>
+
+<div className="grid md:grid-cols-3 gap-8">
+
+<div>
+
+<h3 className="font-semibold mb-2">
+Smart Itineraries
+</h3>
+
+<p className="text-gray-600">
+Generate optimized travel itineraries instantly.
+</p>
+
+</div>
+
+<div>
+
+<h3 className="font-semibold mb-2">
+Budget Planning
+</h3>
+
+<p className="text-gray-600">
+Estimate travel costs and plan trips efficiently.
+</p>
+
+</div>
+
+<div>
+
+<h3 className="font-semibold mb-2">
+Discover Destinations
+</h3>
+
+<p className="text-gray-600">
+Explore new places and travel guides.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+);
+
 }
