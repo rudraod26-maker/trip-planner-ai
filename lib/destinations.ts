@@ -1,8 +1,9 @@
 export type Destination = {
-  slug: string;
-  name: string;
-  description: string;
-};
+  slug: string
+  name: string
+  description: string
+  type?: string
+}
 
 export const destinations: Destination[] = [
 

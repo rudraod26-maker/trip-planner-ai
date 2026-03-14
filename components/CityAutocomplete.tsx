@@ -61,7 +61,6 @@ export default function CityAutocomplete({ placeholder, onSelect }: Props) {
                 onClick={() => selectDestination(item.name)}
               >
                 <span>{item.name}</span>
-                <span className="text-sm text-gray-500">{item.type}</span>
               </div>
             ))
           ) : (
