@@ -5,7 +5,7 @@ import { routes } from "@/lib/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
-  const baseUrl = "https://yourdomain.com";
+  const baseUrl = "https://trip-planner-ai-eta.vercel.app/";
 
   const blogSlugs = getBlogSlugs();
 

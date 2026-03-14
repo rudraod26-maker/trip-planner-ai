@@ -22,7 +22,7 @@ export async function generateMetadata(
   const description =
     `Complete travel guide for ${title}. Discover best places to visit, itinerary ideas, travel tips and budget planning.`;
 
-  const url = `https://yourdomain.com/blog/${slug}`;
+  const url = `https://trip-planner-ai-eta.vercel.app//blog/${slug}`;
 
   return {
     title: `${title} | AI Trip Planner`,

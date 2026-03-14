@@ -1,52 +1,37 @@
+import { NextResponse } from "next/server";
 import { groq } from "@/lib/groq";
-import { optimizeRoute } from "@/lib/optimizeRoute";
+
+const tripCache = new Map();
 
 export async function POST(req: Request) {
 
-  try {
+  const { from, to, days } = await req.json();
 
-    const { from, to, days } = await req.json();
+  const cacheKey = `${from}-${to}-${days}`;
 
-    const route = optimizeRoute([from, to]);
+  if (tripCache.has(cacheKey)) {
+    return NextResponse.json({
+      tripPlan: tripCache.get(cacheKey)
+    });
+  }
 
-    const prompt = `
-Create a ${days}-day travel itinerary in India.
-
-Optimized route:
-${route.join(" → ")}
-
-Include:
-
-Trip overview
-Best travel route
-Day-wise itinerary
-Budget estimate
-Travel tips
+  const prompt = `
+Create a ${days}-day travel itinerary from ${from} to ${to}.
+Include daily activities and major attractions.
 `;
 
-    const completion = await groq.chat.completions.create({
-      model: "llama-3.1-8b-instant",
-      messages: [
-        {
-          role: "user",
-          content: prompt
-        }
-      ]
-    });
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [
+      { role: "user", content: prompt }
+    ]
+  });
 
-    return Response.json({
-      tripPlan: completion.choices[0].message.content
-    });
+  const tripPlan =
+    completion.choices[0]?.message?.content || "No plan generated.";
 
-  } catch (error) {
+  tripCache.set(cacheKey, tripPlan);
 
-    console.error(error);
-
-    return Response.json(
-      { error: "Trip generation failed" },
-      { status: 500 }
-    );
-
-  }
+  return NextResponse.json({ tripPlan });
 
 }

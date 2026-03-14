@@ -15,7 +15,7 @@ template: "%s | AI Trip Planner"
 description:
 "AI powered travel planner for India. Generate itineraries, explore travel guides and discover destinations.",
 
-metadataBase: new URL("https://yourdomain.com"),
+metadataBase: new URL("https://trip-planner-ai-eta.vercel.app/"),
 
 openGraph: {
 title: "AI Trip Planner",
